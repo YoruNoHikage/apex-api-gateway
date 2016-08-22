@@ -1,0 +1,23 @@
+{
+  "name": "apex-api-gateway",
+  "version": "0.1.0",
+  "licence": "MIT",
+  "description": "Create and deploy your Apex project on AWS API Gateway using Swagger configuration",
+  "keywords": [
+    "apex",
+    "swagger",
+    "aws lambda",
+    "aws api gateway",
+    "cli"
+  ],
+  "author": "Alexis Launay <yorunohikage@gmail.com> (http://yorunohikage.fr)",
+  "repository": "YoruNoHikage/apex-api-gateway",
+  "dependencies": {
+    "aws-sdk": "^2.5.2",
+    "lodash.defaultsdeep": "^4.5.1",
+    "yargs": "^5.0.0"
+  },
+  "bin": {
+    "apex-api-gateway": "index.js"
+  }
+}
