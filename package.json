@@ -1,6 +1,6 @@
 {
   "name": "apex-api-gateway",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "licence": "MIT",
   "description": "Create and deploy your Apex project on AWS API Gateway using Swagger configuration",
   "keywords": [
@@ -15,6 +15,7 @@
   "dependencies": {
     "aws-sdk": "^2.5.2",
     "lodash.defaultsdeep": "^4.5.1",
+    "lodash.topairs": "^4.3.0",
     "yargs": "^5.0.0"
   },
   "bin": {

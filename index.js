@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const defaultsDeep = require('lodash.defaultsDeep');
+const entries = require('lodash.topairs');
 const yargs = require('yargs');
 const AWS = require('aws-sdk');
 const apigateway = new AWS.APIGateway();
@@ -91,6 +92,15 @@ function update({ config, stdout }) {
 
       paths[path] = paths[path] || {};
       paths[path][method] = renderMethod(name, definition);
+    });
+
+    entries(projectConfig['x-api-gateway']['paths']).forEach(([key, value]) => {
+      const keyPattern = new RegExp(`^${key}$`);
+      const matchedPaths = entries(paths).filter(([path]) => keyPattern.test(path));
+
+      matchedPaths.forEach(([path, pathValue]) => {
+        defaultsDeep(pathValue, value); // paths local mutation seems to be the best
+      });
     });
 
     return paths;
