@@ -6,6 +6,8 @@ If you need more advanced features, you can use [AWS CLI](https://aws.amazon.com
 
 [![npm version](https://img.shields.io/npm/v/apex-api-gateway.svg?style=flat-square)](https://www.npmjs.com/package/apex-api-gateway)
 
+_This project was inspired by [serverless-ci-example](https://github.com/rotemtam/serverless-ci-example)'s Python deploy script._
+
 Installation
 ------------
 
