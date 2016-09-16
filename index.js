@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const defaultsDeep = require('lodash.defaultsDeep');
+const defaultsDeep = require('lodash.defaultsdeep');
 const entries = require('lodash.topairs');
 const yargs = require('yargs');
 const AWS = require('aws-sdk');
