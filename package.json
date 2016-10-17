@@ -12,13 +12,21 @@
   ],
   "author": "Alexis Launay <yorunohikage@gmail.com> (http://yorunohikage.fr)",
   "repository": "YoruNoHikage/apex-api-gateway",
+  "scripts": {
+    "compile": "babel --presets es2015 -d lib/ src/",
+    "prepublish": "npm run compile"
+  },
   "dependencies": {
     "aws-sdk": "^2.5.2",
     "lodash.defaultsdeep": "^4.5.1",
     "lodash.topairs": "^4.3.0",
     "yargs": "^5.0.0"
   },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0"
+  },
   "bin": {
-    "apex-api-gateway": "index.js"
+    "apex-api-gateway": "lib/index.js"
   }
 }
