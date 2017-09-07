@@ -117,7 +117,8 @@ function update({ config, stdout }) {
           definition: functionDef,
         };
       } catch(e) { return; }
-    });
+    })
+    .filter((i) => i);
 
   const swagger = {
     "swagger": "2.0",
