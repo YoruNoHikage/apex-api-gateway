@@ -66,7 +66,13 @@ function update({ config, stdout }) {
 
   const restApiId = projectConfig['x-api-gateway']['rest-api-id'];
 
-  const renderMethod = (name, { description, ['x-api-gateway']: { parameters } }) => {
+  const renderMethod = (name, { description, ['x-api-gateway']: {
+    parameters,
+    consumes,
+    produces,
+    responses,
+    ['x-amazon-apigateway-integration']: integration = {},
+  } }) => {
     const template = projectConfig['x-api-gateway']['swagger-func-template'];
     return defaultsDeep(
       {
@@ -74,8 +80,12 @@ function update({ config, stdout }) {
         ['x-amazon-apigateway-integration']: {
           httpMethod: 'post',
           uri: template['x-amazon-apigateway-integration'].uri.replace('{{functionName}}', `${projectConfig.name}_${name}`),
+          responses: integration.responses,
         },
         parameters,
+        consumes,
+        produces,
+        responses,
       },
       template
     );
