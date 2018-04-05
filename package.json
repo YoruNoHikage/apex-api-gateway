@@ -1,6 +1,6 @@
 {
   "name": "apex-api-gateway",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "licence": "MIT",
   "description": "Create and deploy your Apex project on AWS API Gateway using Swagger configuration",
   "keywords": [
