@@ -65,6 +65,7 @@ function update({ config, stdout }) {
   }
 
   const restApiId = projectConfig['x-api-gateway']['rest-api-id'];
+  const minimumCompressionSize = projectConfig['x-api-gateway']['minimumCompressionSize'];
 
   const renderMethod = (name, { description, ['x-api-gateway']: {
     parameters,
@@ -186,7 +187,24 @@ function update({ config, stdout }) {
         return;
       }
 
-      console.log('API deployed successfully!');
+      apigateway.updateRestApi({
+        restApiId,
+        patchOperations: [
+          {
+            op: 'replace',    
+            path: '/minimumCompressionSize',
+            value: minimumCompressionSize,
+          }
+        ],
+      }, (err, data) => {
+        if (err) {
+          console.log(err, err.stack);
+          return;
+        }
+
+        console.log('API deployed successfully!');
+      });
+
     });
   });
 }
