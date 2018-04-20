@@ -82,6 +82,10 @@ function update({ config, stdout }) {
           httpMethod: 'post',
           uri: template['x-amazon-apigateway-integration'].uri.replace('{{functionName}}', `${projectConfig.name}_${name}`),
           responses: integration.responses,
+          requestTemplates: integration.requestTemplates,
+          contentHandling: integration.contentHandling,
+          passthroughBehavior: integration.passthroughBehavior,
+          type: integration.type,
         },
         parameters,
         consumes,
@@ -131,6 +135,7 @@ function update({ config, stdout }) {
     })
     .filter((i) => i);
 
+  const apiConfig = projectConfig['x-api-gateway'];
   const swagger = {
     "swagger": "2.0",
     "info": {
@@ -153,7 +158,9 @@ function update({ config, stdout }) {
       "Empty": {
         "type": "object"
       }
-    }
+    },
+    "x-amazon-apigateway-binary-media-types": apiConfig['x-amazon-apigateway-binary-media-types'],
+    "x-amazon-apigateway-minimum-compression-size": apiConfig['x-amazon-apigateway-minimum-compression-size'],
   };
 
   if(stdout) {
@@ -187,24 +194,7 @@ function update({ config, stdout }) {
         return;
       }
 
-      apigateway.updateRestApi({
-        restApiId,
-        patchOperations: [
-          {
-            op: 'replace',    
-            path: '/minimumCompressionSize',
-            value: minimumCompressionSize,
-          }
-        ],
-      }, (err, data) => {
-        if (err) {
-          console.log(err, err.stack);
-          return;
-        }
-
-        console.log('API deployed successfully!');
-      });
-
+      console.log('API deployed successfully!');
     });
   });
 }
