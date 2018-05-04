@@ -1,6 +1,6 @@
 {
   "name": "apex-api-gateway",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "licence": "MIT",
   "description": "Create and deploy your Apex project on AWS API Gateway using Swagger configuration",
   "keywords": [
@@ -14,7 +14,7 @@
   "repository": "YoruNoHikage/apex-api-gateway",
   "scripts": {
     "compile": "babel --presets es2015 -d lib/ src/",
-    "prepublish": "npm run compile"
+    "prepare": "npm run compile"
   },
   "dependencies": {
     "aws-sdk": "^2.5.2",
